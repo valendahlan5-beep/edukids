@@ -5,7 +5,7 @@ import { dirname, join } from 'path'
 
 export default defineConfig({
   plugins: [react()],
-  base: './',
+  base: '/edukids/',
   build: {
     chunkSizeWarningLimit: 1200,
   },
