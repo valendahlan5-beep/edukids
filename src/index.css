@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-[#f6f8ff] text-slate-800 font-body antialiased;
+  background-image:
+    radial-gradient(circle at 8% 4%, rgba(96, 165, 250, 0.12), transparent 28%),
+    radial-gradient(circle at 92% 2%, rgba(253, 224, 71, 0.18), transparent 24%),
+    radial-gradient(circle at 80% 90%, rgba(52, 211, 153, 0.1), transparent 26%);
+  background-attachment: fixed;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: "Baloo 2", system-ui, sans-serif;
+  @apply tracking-tight;
+}
+
+::selection {
+  background: #bfdbfe;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 999px;
+  border: 2px solid #f6f8ff;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+@layer components {
+  .card {
+    @apply rounded-3xl border border-white bg-white shadow-soft;
+  }
+  .card-hover {
+    @apply transition-all duration-200 hover:-translate-y-1 hover:shadow-lg;
+  }
+  .input {
+    @apply w-full rounded-2xl border-2 border-slate-200 bg-white px-4 py-3 text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-brand-400 focus:ring-4 focus:ring-brand-100;
+  }
+  .label {
+    @apply mb-1.5 block text-sm font-bold text-slate-600;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-bold;
+  }
+  .section-title {
+    @apply font-display text-xl font-bold text-slate-900 sm:text-2xl;
+  }
+  .link {
+    @apply font-bold text-brand-600 underline-offset-4 hover:underline;
+  }
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.confetti-bg {
+  background-image: radial-gradient(circle, rgba(251, 191, 36, 0.35) 2px, transparent 2px),
+    radial-gradient(circle, rgba(59, 130, 246, 0.25) 2px, transparent 2px);
+  background-size: 26px 26px, 38px 38px;
+  background-position: 0 0, 13px 19px;
+}
+
+.dotted-bg {
+  background-image: radial-gradient(rgba(37, 99, 235, 0.14) 1.5px, transparent 1.5px);
+  background-size: 18px 18px;
+}
+
+.hero-glow {
+  background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 45%, #3b82f6 70%, #38bdf8 100%);
+}
+
+.sticker-shadow {
+  filter: drop-shadow(0 8px 12px rgba(15, 23, 42, 0.18));
+}
+
+.book-spine {
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.16), transparent 12%, transparent 88%, rgba(255, 255, 255, 0.25));
+}
+
+.timer-ring {
+  background: conic-gradient(var(--ring-color, #f59e0b) var(--progress, 0%), #e2e8f0 0);
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0.3; transform: scale(0.8) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1.15) rotate(12deg); }
+}
+.sparkle {
+  animation: sparkle 2.4s ease-in-out infinite;
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0.7); opacity: 0; }
+  60% { transform: scale(1.06); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.bounce-in {
+  animation: bounceIn 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes rise {
+  from { transform: translateY(18px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.rise {
+  animation: rise 0.4s ease-out both;
+}
+
+.prose-kid p {
+  @apply mb-3 leading-relaxed text-slate-700;
+}
+.prose-kid strong {
+  @apply text-slate-900;
+}
+
+@media print {
+  .no-print { display: none !important; }
+  body { background: white; }
+  .card { box-shadow: none; border: 1px solid #e2e8f0; }
+}
